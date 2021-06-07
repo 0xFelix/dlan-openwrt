@@ -54,10 +54,10 @@ define Package/dlan-plc/install
 	$(INSTALL_BIN) files/usr/sbin/* $(1)/usr/sbin
 endef
 
-define Package/$(PKG_NAME)-pro-1200-ac
+define Package/$(PKG_NAME)-pro-1200plus-ac
   $(call Package/$(PKG_NAME)/Default)
   TITLE += dLAN pro 1200+ WiFi ac
-  FW_TARGET:=devolo,dlan-pro-1200-ac
+  FW_TARGET:=devolo,dlan-pro-1200plus-ac
   FW_HOSTTOOL:=plchost
   DEPENDS+=+open-plc-utils-$$(FW_HOSTTOOL)
 endef
@@ -81,7 +81,7 @@ endif
 	echo "PLCFW_SCHEMES=\$$$$PLCFW_PATH/$(FW_TARGET)" >>$(1)/lib/firmware/plc/$(FW_TARGET)/fwconfig
 endef
 
-Package/$(PKG_NAME)-pro-1200-ac/install = $(InstallFirmware)
+Package/$(PKG_NAME)-pro-1200plus-ac/install = $(InstallFirmware)
 
 define Build/Compile
 endef
@@ -90,4 +90,4 @@ define Build/Install
 endef
 
 $(eval $(call BuildPackage,dlan-plc))
-$(eval $(call BuildPackage,$(PKG_NAME)-pro-1200-ac))
+$(eval $(call BuildPackage,$(PKG_NAME)-pro-1200plus-ac))

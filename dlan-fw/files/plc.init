@@ -124,7 +124,7 @@ set_user_pib()
 do_gpios()
 {
     case "$board" in
-    devolo,dlan-pro-1200-ac)
+    devolo,dlan-pro-1200plus-ac)
 	echo 1 > /sys/class/gpio/gpio13/value
 	led_set_attr "white:dlan" inverted 1
 	;;
@@ -199,7 +199,7 @@ activate() {
 stop_service() {
     logger "stop PLC"
     case "$board" in
-    devolo,dlan-pro-1200-ac)
+    devolo,dlan-pro-1200plus-ac)
 	# reinstall normal led trigger potentially messed up by standby
 	( . /etc/init.d/led && config_load system && load_led led_plcw )
 	echo 0 > /sys/class/gpio/gpio13/value
@@ -263,7 +263,7 @@ standby() {
     [ $STANDBY = '0' ] && return
 
     case "$board" in
-    devolo,dlan-pro-1200-ac)
+    devolo,dlan-pro-1200plus-ac)
         # LED scheme 2014
         [ "$LED_SCHEME" = "on" ] && {
             led_timer "$(uci_get system led_plcw sysfs)" 500 59500
@@ -281,7 +281,7 @@ normal() {
     [ $STANDBY = '0' ] && return
 
     case "$board" in
-    devolo,dlan-pro-1200-ac)
+    devolo,dlan-pro-1200plus-ac)
         # LED scheme 2014
         [ "$LED_SCHEME" = "on" ] && {
             ( . /etc/init.d/led && config_load system && load_led led_plcw )

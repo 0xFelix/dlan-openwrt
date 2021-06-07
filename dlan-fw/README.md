@@ -16,7 +16,7 @@ interface.
 
 Device | Required PLC firmware package
 ---|---
-dLAN pro 1200+ WiFi ac|dlan-fw-pro-1200-ac
+dLAN pro 1200+ WiFi ac|dlan-fw-pro-1200plus-ac
 
 After installing the new firmware use the init script ```/etc/init.d/plc``` to
 start or stop the PLC interface. By default its enabled to be started automatically
